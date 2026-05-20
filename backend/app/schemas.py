@@ -1,6 +1,8 @@
 """Pydantic request / response models for QyverixAI."""
 
 from __future__ import annotations
+from typing import Any
+
 from pydantic import BaseModel, field_validator
 
 
@@ -84,3 +86,20 @@ class HealthResponse(BaseModel):
     version: str
     message: str
     endpoints: list[str] | None = None
+
+
+# ── Share ────────────────────────────────────────────────────────────────────
+class ShareCreateRequest(BaseModel):
+    code: str
+    result: Any
+
+
+class ShareCreateResponse(BaseModel):
+    id: str
+
+
+class ShareRecord(BaseModel):
+    id: str
+    code: str
+    result: Any
+    created_at: str

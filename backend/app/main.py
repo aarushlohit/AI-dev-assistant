@@ -13,7 +13,7 @@ import os
 from collections import defaultdict
 from contextlib import asynccontextmanager
 
-from .routers import explanation, debugging, suggestions, analyze
+from .routers import explanation, debugging, suggestions, analyze, share
 from .schemas import HealthResponse
 
 
@@ -84,6 +84,7 @@ app.include_router(explanation.router, prefix="/explanation", tags=["Explanation
 app.include_router(debugging.router,   prefix="/debugging",   tags=["Debugging"])
 app.include_router(suggestions.router, prefix="/suggestions", tags=["Suggestions"])
 app.include_router(analyze.router,     prefix="/analyze",     tags=["Full Analysis"])
+app.include_router(share.router,       prefix="/share",       tags=["Share"])
 
 
 # ── Core Endpoints ────────────────────────────────────────────────────────────
@@ -93,7 +94,7 @@ async def root():
         "status": "ok",
         "version": "3.0.0",
         "message": "QyverixAI API is running.",
-        "endpoints": ["/explanation/", "/debugging/", "/suggestions/", "/analyze/"],
+        "endpoints": ["/explanation/", "/debugging/", "/suggestions/", "/analyze/", "/share/"],
     }
 
 
@@ -103,7 +104,7 @@ async def health_check():
         "status": "ok",
         "version": "3.0.0",
         "message": "QyverixAI is healthy",
-        "endpoints": ["/explanation/", "/debugging/", "/suggestions/", "/analyze/"],
+        "endpoints": ["/explanation/", "/debugging/", "/suggestions/", "/analyze/", "/share/"],
     }
 
 

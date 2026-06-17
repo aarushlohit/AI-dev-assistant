@@ -283,6 +283,7 @@ class ShareCreateRequest(BaseModel):
 
 class ShareRecord(BaseModel):
     id: str
+    user_id: int | None = None
     action: str
     code: str
     result: dict[str, Any]

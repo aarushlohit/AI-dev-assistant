@@ -3,13 +3,12 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 
 import pytest
+from app.database import Base, get_db
+from app.main import app
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
-
-from app.database import Base, get_db
-from app.main import app
 
 TEST_ENGINE = create_engine(
     "sqlite:///:memory:",
